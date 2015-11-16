@@ -1,0 +1,390 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xiaoka.mybatis.dao.CarUserMapper" >
+  <resultMap id="BaseResultMap" type="com.xiaoka.mybatis.CarUser" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="phone" property="phone" jdbcType="VARCHAR" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="avatar" property="avatar" jdbcType="VARCHAR" />
+    <result column="chat_password" property="chatPassword" jdbcType="VARCHAR" />
+    <result column="chat_mail" property="chatMail" jdbcType="VARCHAR" />
+    <result column="is_valid" property="isValid" jdbcType="INTEGER" />
+    <result column="is_expert" property="isExpert" jdbcType="INTEGER" />
+    <result column="is_business" property="isBusiness" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="code" property="code" jdbcType="CHAR" />
+    <result column="code_time" property="codeTime" jdbcType="TIMESTAMP" />
+    <result column="login_time" property="loginTime" jdbcType="TIMESTAMP" />
+    <result column="token" property="token" jdbcType="VARCHAR" />
+    <result column="code_count" property="codeCount" jdbcType="INTEGER" />
+    <result column="code_flag_time" property="codeFlagTime" jdbcType="TIMESTAMP" />
+    <result column="settlement" property="settlement" jdbcType="INTEGER" />
+    <result column="settlement_code" property="settlementCode" jdbcType="CHAR" />
+    <result column="token_update_code" property="tokenUpdateCode" jdbcType="INTEGER" />
+    <result column="device_id" property="deviceId" jdbcType="VARCHAR" />
+    <result column="city" property="city" jdbcType="VARCHAR" />
+    <result column="wechat_open_id" property="wechatOpenId" jdbcType="VARCHAR" />
+    <result column="source" property="source" jdbcType="INTEGER" />
+    <result column="upgrade_time" property="upgradeTime" jdbcType="TIMESTAMP" />
+    <result column="user_busi_agreement_id" property="userBusiAgreementId" jdbcType="VARCHAR" />
+    <result column="user_pay_agreement_id" property="userPayAgreementId" jdbcType="VARCHAR" />
+    <result column="union_pay_bind_bank" property="unionPayBindBank" jdbcType="VARCHAR" />
+    <result column="union_pay_last_four" property="unionPayLastFour" jdbcType="VARCHAR" />
+    <result column="union_pay_card_type" property="unionPayCardType" jdbcType="VARCHAR" />
+    <result column="union_pay_bind_phone" property="unionPayBindPhone" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, phone, name, avatar, chat_password, chat_mail, is_valid, is_expert, is_business, 
+    create_time, code, code_time, login_time, token, code_count, code_flag_time, settlement, 
+    settlement_code, token_update_code, device_id, city, wechat_open_id, source, upgrade_time, 
+    user_busi_agreement_id, user_pay_agreement_id, union_pay_bind_bank, union_pay_last_four, 
+    union_pay_card_type, union_pay_bind_phone
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from car_user
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from car_user
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.xiaoka.mybatis.CarUser" >
+    insert into car_user (id, phone, name, 
+      avatar, chat_password, chat_mail, 
+      is_valid, is_expert, is_business, 
+      create_time, code, code_time, 
+      login_time, token, code_count, 
+      code_flag_time, settlement, settlement_code, 
+      token_update_code, device_id, city, 
+      wechat_open_id, source, upgrade_time, 
+      user_busi_agreement_id, user_pay_agreement_id, 
+      union_pay_bind_bank, union_pay_last_four, union_pay_card_type, 
+      union_pay_bind_phone)
+    values (#{id,jdbcType=INTEGER}, #{phone,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, 
+      #{avatar,jdbcType=VARCHAR}, #{chatPassword,jdbcType=VARCHAR}, #{chatMail,jdbcType=VARCHAR}, 
+      #{isValid,jdbcType=INTEGER}, #{isExpert,jdbcType=INTEGER}, #{isBusiness,jdbcType=INTEGER}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{code,jdbcType=CHAR}, #{codeTime,jdbcType=TIMESTAMP}, 
+      #{loginTime,jdbcType=TIMESTAMP}, #{token,jdbcType=VARCHAR}, #{codeCount,jdbcType=INTEGER}, 
+      #{codeFlagTime,jdbcType=TIMESTAMP}, #{settlement,jdbcType=INTEGER}, #{settlementCode,jdbcType=CHAR}, 
+      #{tokenUpdateCode,jdbcType=INTEGER}, #{deviceId,jdbcType=VARCHAR}, #{city,jdbcType=VARCHAR}, 
+      #{wechatOpenId,jdbcType=VARCHAR}, #{source,jdbcType=INTEGER}, #{upgradeTime,jdbcType=TIMESTAMP}, 
+      #{userBusiAgreementId,jdbcType=VARCHAR}, #{userPayAgreementId,jdbcType=VARCHAR}, 
+      #{unionPayBindBank,jdbcType=VARCHAR}, #{unionPayLastFour,jdbcType=VARCHAR}, #{unionPayCardType,jdbcType=VARCHAR}, 
+      #{unionPayBindPhone,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.xiaoka.mybatis.CarUser" >
+    insert into car_user
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="phone != null" >
+        phone,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="avatar != null" >
+        avatar,
+      </if>
+      <if test="chatPassword != null" >
+        chat_password,
+      </if>
+      <if test="chatMail != null" >
+        chat_mail,
+      </if>
+      <if test="isValid != null" >
+        is_valid,
+      </if>
+      <if test="isExpert != null" >
+        is_expert,
+      </if>
+      <if test="isBusiness != null" >
+        is_business,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="code != null" >
+        code,
+      </if>
+      <if test="codeTime != null" >
+        code_time,
+      </if>
+      <if test="loginTime != null" >
+        login_time,
+      </if>
+      <if test="token != null" >
+        token,
+      </if>
+      <if test="codeCount != null" >
+        code_count,
+      </if>
+      <if test="codeFlagTime != null" >
+        code_flag_time,
+      </if>
+      <if test="settlement != null" >
+        settlement,
+      </if>
+      <if test="settlementCode != null" >
+        settlement_code,
+      </if>
+      <if test="tokenUpdateCode != null" >
+        token_update_code,
+      </if>
+      <if test="deviceId != null" >
+        device_id,
+      </if>
+      <if test="city != null" >
+        city,
+      </if>
+      <if test="wechatOpenId != null" >
+        wechat_open_id,
+      </if>
+      <if test="source != null" >
+        source,
+      </if>
+      <if test="upgradeTime != null" >
+        upgrade_time,
+      </if>
+      <if test="userBusiAgreementId != null" >
+        user_busi_agreement_id,
+      </if>
+      <if test="userPayAgreementId != null" >
+        user_pay_agreement_id,
+      </if>
+      <if test="unionPayBindBank != null" >
+        union_pay_bind_bank,
+      </if>
+      <if test="unionPayLastFour != null" >
+        union_pay_last_four,
+      </if>
+      <if test="unionPayCardType != null" >
+        union_pay_card_type,
+      </if>
+      <if test="unionPayBindPhone != null" >
+        union_pay_bind_phone,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="phone != null" >
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="avatar != null" >
+        #{avatar,jdbcType=VARCHAR},
+      </if>
+      <if test="chatPassword != null" >
+        #{chatPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="chatMail != null" >
+        #{chatMail,jdbcType=VARCHAR},
+      </if>
+      <if test="isValid != null" >
+        #{isValid,jdbcType=INTEGER},
+      </if>
+      <if test="isExpert != null" >
+        #{isExpert,jdbcType=INTEGER},
+      </if>
+      <if test="isBusiness != null" >
+        #{isBusiness,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="code != null" >
+        #{code,jdbcType=CHAR},
+      </if>
+      <if test="codeTime != null" >
+        #{codeTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="loginTime != null" >
+        #{loginTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="token != null" >
+        #{token,jdbcType=VARCHAR},
+      </if>
+      <if test="codeCount != null" >
+        #{codeCount,jdbcType=INTEGER},
+      </if>
+      <if test="codeFlagTime != null" >
+        #{codeFlagTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="settlement != null" >
+        #{settlement,jdbcType=INTEGER},
+      </if>
+      <if test="settlementCode != null" >
+        #{settlementCode,jdbcType=CHAR},
+      </if>
+      <if test="tokenUpdateCode != null" >
+        #{tokenUpdateCode,jdbcType=INTEGER},
+      </if>
+      <if test="deviceId != null" >
+        #{deviceId,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null" >
+        #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="wechatOpenId != null" >
+        #{wechatOpenId,jdbcType=VARCHAR},
+      </if>
+      <if test="source != null" >
+        #{source,jdbcType=INTEGER},
+      </if>
+      <if test="upgradeTime != null" >
+        #{upgradeTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="userBusiAgreementId != null" >
+        #{userBusiAgreementId,jdbcType=VARCHAR},
+      </if>
+      <if test="userPayAgreementId != null" >
+        #{userPayAgreementId,jdbcType=VARCHAR},
+      </if>
+      <if test="unionPayBindBank != null" >
+        #{unionPayBindBank,jdbcType=VARCHAR},
+      </if>
+      <if test="unionPayLastFour != null" >
+        #{unionPayLastFour,jdbcType=VARCHAR},
+      </if>
+      <if test="unionPayCardType != null" >
+        #{unionPayCardType,jdbcType=VARCHAR},
+      </if>
+      <if test="unionPayBindPhone != null" >
+        #{unionPayBindPhone,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xiaoka.mybatis.CarUser" >
+    update car_user
+    <set >
+      <if test="phone != null" >
+        phone = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="avatar != null" >
+        avatar = #{avatar,jdbcType=VARCHAR},
+      </if>
+      <if test="chatPassword != null" >
+        chat_password = #{chatPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="chatMail != null" >
+        chat_mail = #{chatMail,jdbcType=VARCHAR},
+      </if>
+      <if test="isValid != null" >
+        is_valid = #{isValid,jdbcType=INTEGER},
+      </if>
+      <if test="isExpert != null" >
+        is_expert = #{isExpert,jdbcType=INTEGER},
+      </if>
+      <if test="isBusiness != null" >
+        is_business = #{isBusiness,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="code != null" >
+        code = #{code,jdbcType=CHAR},
+      </if>
+      <if test="codeTime != null" >
+        code_time = #{codeTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="loginTime != null" >
+        login_time = #{loginTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="token != null" >
+        token = #{token,jdbcType=VARCHAR},
+      </if>
+      <if test="codeCount != null" >
+        code_count = #{codeCount,jdbcType=INTEGER},
+      </if>
+      <if test="codeFlagTime != null" >
+        code_flag_time = #{codeFlagTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="settlement != null" >
+        settlement = #{settlement,jdbcType=INTEGER},
+      </if>
+      <if test="settlementCode != null" >
+        settlement_code = #{settlementCode,jdbcType=CHAR},
+      </if>
+      <if test="tokenUpdateCode != null" >
+        token_update_code = #{tokenUpdateCode,jdbcType=INTEGER},
+      </if>
+      <if test="deviceId != null" >
+        device_id = #{deviceId,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null" >
+        city = #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="wechatOpenId != null" >
+        wechat_open_id = #{wechatOpenId,jdbcType=VARCHAR},
+      </if>
+      <if test="source != null" >
+        source = #{source,jdbcType=INTEGER},
+      </if>
+      <if test="upgradeTime != null" >
+        upgrade_time = #{upgradeTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="userBusiAgreementId != null" >
+        user_busi_agreement_id = #{userBusiAgreementId,jdbcType=VARCHAR},
+      </if>
+      <if test="userPayAgreementId != null" >
+        user_pay_agreement_id = #{userPayAgreementId,jdbcType=VARCHAR},
+      </if>
+      <if test="unionPayBindBank != null" >
+        union_pay_bind_bank = #{unionPayBindBank,jdbcType=VARCHAR},
+      </if>
+      <if test="unionPayLastFour != null" >
+        union_pay_last_four = #{unionPayLastFour,jdbcType=VARCHAR},
+      </if>
+      <if test="unionPayCardType != null" >
+        union_pay_card_type = #{unionPayCardType,jdbcType=VARCHAR},
+      </if>
+      <if test="unionPayBindPhone != null" >
+        union_pay_bind_phone = #{unionPayBindPhone,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xiaoka.mybatis.CarUser" >
+    update car_user
+    set phone = #{phone,jdbcType=VARCHAR},
+      name = #{name,jdbcType=VARCHAR},
+      avatar = #{avatar,jdbcType=VARCHAR},
+      chat_password = #{chatPassword,jdbcType=VARCHAR},
+      chat_mail = #{chatMail,jdbcType=VARCHAR},
+      is_valid = #{isValid,jdbcType=INTEGER},
+      is_expert = #{isExpert,jdbcType=INTEGER},
+      is_business = #{isBusiness,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      code = #{code,jdbcType=CHAR},
+      code_time = #{codeTime,jdbcType=TIMESTAMP},
+      login_time = #{loginTime,jdbcType=TIMESTAMP},
+      token = #{token,jdbcType=VARCHAR},
+      code_count = #{codeCount,jdbcType=INTEGER},
+      code_flag_time = #{codeFlagTime,jdbcType=TIMESTAMP},
+      settlement = #{settlement,jdbcType=INTEGER},
+      settlement_code = #{settlementCode,jdbcType=CHAR},
+      token_update_code = #{tokenUpdateCode,jdbcType=INTEGER},
+      device_id = #{deviceId,jdbcType=VARCHAR},
+      city = #{city,jdbcType=VARCHAR},
+      wechat_open_id = #{wechatOpenId,jdbcType=VARCHAR},
+      source = #{source,jdbcType=INTEGER},
+      upgrade_time = #{upgradeTime,jdbcType=TIMESTAMP},
+      user_busi_agreement_id = #{userBusiAgreementId,jdbcType=VARCHAR},
+      user_pay_agreement_id = #{userPayAgreementId,jdbcType=VARCHAR},
+      union_pay_bind_bank = #{unionPayBindBank,jdbcType=VARCHAR},
+      union_pay_last_four = #{unionPayLastFour,jdbcType=VARCHAR},
+      union_pay_card_type = #{unionPayCardType,jdbcType=VARCHAR},
+      union_pay_bind_phone = #{unionPayBindPhone,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

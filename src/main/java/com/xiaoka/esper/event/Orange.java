@@ -1,12 +1,12 @@
-package com.xiaoka.esper;
+package com.xiaoka.esper.event;
 
 /**
  * Created by Administrator on 2015/5/27.
  */
-public class Apple {
+public class Orange {
     private int id;
     private int price;
-
+    private int kind;
     public int getId() {
         return id;
     }
@@ -21,5 +21,13 @@ public class Apple {
 
     public void setPrice(int price) {
         this.price = price;
+    }
+
+    public int getKind() {
+        return kind;
+    }
+
+    public void setKind(int kind) {
+        this.kind = kind;
     }
 }

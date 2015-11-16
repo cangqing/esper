@@ -1,15 +1,15 @@
 package com.xiaoka.esper;
 
-import com.espertech.esper.client.EPAdministrator;
-import com.espertech.esper.client.EPRuntime;
-import com.espertech.esper.client.EPServiceProvider;
-import com.espertech.esper.client.EPServiceProviderManager;
-import com.espertech.esper.client.EPStatement;
+import com.espertech.esper.client.*;
 import com.xiaoka.esper.event.Apple;
 import com.xiaoka.esper.listener.ContextPropertiesListener;
 
-public class EsperContext {
-    public static void main(String[] args) {
+/**
+ * Created by Administrator on 2015/6/2.
+ */
+public class TestEsperAdmin {
+
+    public void main(String args[]) {
         EPServiceProvider epService = EPServiceProviderManager.getDefaultProvider();
         EPAdministrator admin = epService.getEPAdministrator();
         EPRuntime runtime = epService.getEPRuntime();
